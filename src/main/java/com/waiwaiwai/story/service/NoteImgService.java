@@ -1,7 +1,7 @@
 package com.waiwaiwai.story.service;
 
 import com.waiwaiwai.story.pojo.NoteImg;
-import com.baomidou.mybatisplus.service.IService;
+import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
  * <p>

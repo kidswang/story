@@ -2,18 +2,23 @@ package com.waiwaiwai.story.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.waiwaiwai.story.bo.UserInfoBo;
 import com.waiwaiwai.story.pojo.UserInfo;
 import com.waiwaiwai.story.mapper.UserInfoMapper;
 import com.waiwaiwai.story.response.ResponseBean;
 import com.waiwaiwai.story.response.ResponseStatusEnum;
 import com.waiwaiwai.story.service.UserInfoService;
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.waiwaiwai.story.util.HttpClientUtils;
 import com.waiwaiwai.story.util.HttpExecuteResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.Objects;
 
 /**
  * <p>
@@ -25,6 +30,9 @@ import java.util.HashMap;
  */
 @Service
 public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> implements UserInfoService {
+
+    @Autowired
+    private UserInfoMapper userInfoMapper;
 
     private static final String AUTH_CODE_URL = "https://api.weixin.qq.com/sns/jscode2session";
 
@@ -40,7 +48,6 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
     @Override
     public ResponseBean<String> register(String code) {
         ResponseBean<String> responseBean = new ResponseBean<>();
-        StringBuilder builder = new StringBuilder();
         HashMap<String, String> stringStringHashMap = new HashMap<>();
         stringStringHashMap.put("appid" , appId);
         stringStringHashMap.put("secret" , secret);
@@ -52,7 +59,7 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
         JSONObject jsonObject = JSON.parseObject(responseAsString);
 
         String errcode = (String) jsonObject.get("errcode");
-        if (!errcode.equals(0)) {
+        if (Objects.nonNull(errcode) && !errcode.equals(0)) {
             responseBean.setRes("");
             responseBean.setCode(ResponseStatusEnum.ERROR.getStatusCode());
             responseBean.setMsg(ResponseStatusEnum.ERROR.getMsg());
@@ -62,9 +69,43 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
         String openid = (String) jsonObject.get("openid");
         String sessionKey = (String) jsonObject.get("session_key");
 
+        responseBean.setRes(openid);
+        responseBean.setCode(ResponseStatusEnum.SUCCESS.getStatusCode());
+        responseBean.setMsg(ResponseStatusEnum.SUCCESS.getMsg());
+        return responseBean;
+    }
 
+    @Override
+    public ResponseBean<Boolean> saveOrUpdate(UserInfoBo userInfoBo) {
+        ResponseBean<Boolean> responseBean = new ResponseBean<>();
+        String openId = userInfoBo.getOpenId();
+        String nickName = userInfoBo.getNickName();
+        LambdaQueryWrapper<UserInfo> userInfoLambdaQueryWrapper = new LambdaQueryWrapper<>();
 
+        userInfoLambdaQueryWrapper.eq(UserInfo::getOpenId, openId);
+        UserInfo userInfo = userInfoMapper.selectOne(userInfoLambdaQueryWrapper);
 
-        return null;
+        if (Objects.nonNull(userInfo)) {
+            userInfo.setNickName(nickName);
+            userInfoMapper.updateById(userInfo);
+            responseBean.setRes(Boolean.TRUE);
+            responseBean.setCode(ResponseStatusEnum.SUCCESS.getStatusCode());
+            responseBean.setMsg(ResponseStatusEnum.SUCCESS.getMsg());
+            return responseBean;
+        }
+
+        userInfo = new UserInfo();
+
+        userInfo.setNickName(nickName);
+        userInfo.setGender(userInfo.getGender());
+        userInfo.setOpenId(openId);
+        userInfo.setGmtCreate(LocalDateTime.now());
+        userInfo.setGmtModify(LocalDateTime.now());
+        userInfoMapper.insert(userInfo);
+
+        responseBean.setRes(Boolean.TRUE);
+        responseBean.setCode(ResponseStatusEnum.SUCCESS.getStatusCode());
+        responseBean.setMsg(ResponseStatusEnum.SUCCESS.getMsg());
+        return responseBean;
     }
 }

@@ -1,6 +1,7 @@
 package com.waiwaiwai.story.service;
 
-import com.baomidou.mybatisplus.service.IService;
+
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.waiwaiwai.story.pojo.NoteContent;
 
 

@@ -1,6 +1,6 @@
 package com.waiwaiwai.story.service.impl;
 
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.waiwaiwai.story.pojo.StoryDateDictionary;
 import com.waiwaiwai.story.mapper.StoryDateDictionaryMapper;
 import com.waiwaiwai.story.service.StoryDateDictionaryService;

@@ -1,6 +1,7 @@
 package com.waiwaiwai.story.service.impl;
 
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.waiwaiwai.story.pojo.NoteImg;
 import com.waiwaiwai.story.mapper.NoteImgMapper;
 import com.waiwaiwai.story.service.NoteImgService;

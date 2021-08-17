@@ -3,7 +3,7 @@ package com.waiwaiwai.story.service.impl;
 import com.waiwaiwai.story.pojo.TrackModel;
 import com.waiwaiwai.story.mapper.TrackModelMapper;
 import com.waiwaiwai.story.service.TrackModelService;
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**

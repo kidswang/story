@@ -3,7 +3,7 @@ package com.waiwaiwai.story.service.impl;
 import com.waiwaiwai.story.pojo.NoteContent;
 import com.waiwaiwai.story.mapper.NoteContentMapper;
 import com.waiwaiwai.story.service.NoteContentService;
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**
