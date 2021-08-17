@@ -10,3 +10,10 @@ spring:
 
 server:
   port: 9001
+
+
+
+wx:
+  appid: wx2b726168cd838629
+  secret: f6d250483427fe6d3cfc4a196f3a1f5f
+  grant_type: authorization_code

@@ -2,6 +2,7 @@ package com.waiwaiwai.story.service;
 
 import com.waiwaiwai.story.pojo.UserInfo;
 import com.baomidou.mybatisplus.service.IService;
+import com.waiwaiwai.story.response.ResponseBean;
 
 /**
  * <p>
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.service.IService;
  */
 public interface UserInfoService extends IService<UserInfo> {
 
+    ResponseBean<String> register(String code);
 }
