@@ -1,5 +1,6 @@
 package com.waiwaiwai.story.bo;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 
 @Data
@@ -25,5 +26,21 @@ public class UserInfoBo {
      * 微信开放id
      */
     private String openId;
+
+
+    /**
+     * 国家
+     */
+    private String country;
+
+    /**
+     * 省份
+     */
+    private String province;
+
+    /**
+     * 城市
+     */
+    private String city;
 
 }

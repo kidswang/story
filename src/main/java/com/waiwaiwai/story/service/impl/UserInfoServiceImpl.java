@@ -97,10 +97,13 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
         userInfo = new UserInfo();
 
         userInfo.setNickName(nickName);
-        userInfo.setGender(userInfo.getGender());
+        userInfo.setGender(userInfoBo.getGender());
         userInfo.setOpenId(openId);
         userInfo.setGmtCreate(LocalDateTime.now());
         userInfo.setGmtModify(LocalDateTime.now());
+        userInfo.setCountry(userInfoBo.getCountry());
+        userInfo.setProvince(userInfoBo.getProvince());
+        userInfo.setCity(userInfoBo.getCity());
         userInfoMapper.insert(userInfo);
 
         responseBean.setRes(Boolean.TRUE);
