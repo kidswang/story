@@ -60,4 +60,14 @@ public interface FileBiz {
      * @throws IOException e
      */
     ResponseBean<FileUploadResponse> uploadImgFeign(String base64, String userId) throws IOException;
+
+    /**
+     *
+     * uploadImg
+     * @param base64 String
+     * @param userId String
+     * @return ResponseBean
+     * @throws IOException e
+     */
+    ResponseBean<FileUploadResponse> uploadImgByte(byte[] base64, String userId) throws IOException;
 }

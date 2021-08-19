@@ -182,6 +182,21 @@ public class FileBizImpl implements FileBiz {
         return fileUploadResponseResponseBean;
     }
 
+    @Override
+    public ResponseBean<FileUploadResponse> uploadImgByte(byte[] bytes, String userId) throws IOException {
+//        byte[] bytes = Base64.decodeBase64(base64);
+        ByteArrayInputStream in = new ByteArrayInputStream(bytes);
+        MultipartFile file = new MockMultipartFile("file", UUID.randomUUID() + ".jpg", "multipart/form-data; charset=ISO-8859-1", in);
+        ResponseBean<FileUploadResponse> fileUploadResponseResponseBean = this.upload(file, userId);
+        in.close();
+//        String url = fileUploadResponseResponseBean.getRes().getUrl();
+//        ResponseBean<String> responseBean = new ResponseBean<>();
+//        responseBean.setRes(url);
+//        responseBean.setCode(ResponseStatusEnum.SUCCESS.getStatusCode());
+//        responseBean.setMsg("上传成功");
+        return fileUploadResponseResponseBean;
+    }
+
     /**
      * 删除
      *

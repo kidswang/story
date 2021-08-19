@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 
 @RestController
 @RequestMapping(value = "/store")
@@ -24,6 +25,14 @@ public class FileUtilController {
         String userId = request.getHeader("userId");
 
         return fileBiz.upload(file, userId);
+    }
+
+
+    @PostMapping(value = "/uploadImg")
+    public ResponseBean<FileUploadResponse> uploadImg(MultipartFile file, HttpServletRequest request) throws IOException {
+        String userId = request.getHeader("userId");
+
+        return fileBiz.uploadImgByte(file.getBytes(), userId);
     }
 
 }
