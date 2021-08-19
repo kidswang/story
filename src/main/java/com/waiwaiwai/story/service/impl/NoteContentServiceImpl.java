@@ -1,7 +1,9 @@
 package com.waiwaiwai.story.service.impl;
 
+import com.waiwaiwai.story.bo.NoteContentBo;
 import com.waiwaiwai.story.pojo.NoteContent;
 import com.waiwaiwai.story.mapper.NoteContentMapper;
+import com.waiwaiwai.story.response.ResponseBean;
 import com.waiwaiwai.story.service.NoteContentService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
@@ -17,4 +19,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class NoteContentServiceImpl extends ServiceImpl<NoteContentMapper, NoteContent> implements NoteContentService {
 
+    @Override
+    public ResponseBean<Boolean> saveContent(NoteContentBo noteContentBo) {
+        return null;
+    }
 }

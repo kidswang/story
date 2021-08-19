@@ -1,9 +1,13 @@
 package com.waiwaiwai.story.controller;
 
 
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.waiwaiwai.story.bo.NoteContentBo;
+import com.waiwaiwai.story.response.ResponseBean;
+import com.waiwaiwai.story.service.NoteContentService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.RestController;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * <p>
@@ -16,5 +20,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/noteContent")
 public class NoteContentController {
+
+    @Autowired
+    private NoteContentService noteContentService;
+
+    @PostMapping(value = "/saveContent")
+    public ResponseBean<Boolean> saveContent(@RequestBody NoteContentBo noteContentBo, HttpServletRequest request) {
+
+        return noteContentService.saveContent(noteContentBo);
+
+    }
 
 }

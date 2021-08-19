@@ -57,7 +57,7 @@ public class FileBizImpl implements FileBiz {
                     .size(uploadRespMap.get("size"))
                     .md5(uploadRespMap.get("md5"))
                     .build();
-            return ResponseBean.ok("上传成功", fileUploadResponse);
+            return ResponseBean.ok("upload success", fileUploadResponse);
         } catch (IOException e) {
             log.error("", e);
         }

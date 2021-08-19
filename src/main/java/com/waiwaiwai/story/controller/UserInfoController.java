@@ -28,7 +28,7 @@ public class UserInfoController {
     }
 
     @PostMapping(value = "/saveOrUpdate")
-    public ResponseBean<Boolean> saveOrUpdate(@RequestBody UserInfoBo userInfoBo) {
+    public ResponseBean<String> saveOrUpdate(@RequestBody UserInfoBo userInfoBo) {
         return userInfoService.saveOrUpdate(userInfoBo);
     }
 

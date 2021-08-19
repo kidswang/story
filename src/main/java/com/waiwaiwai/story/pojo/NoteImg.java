@@ -37,8 +37,20 @@ public class NoteImg implements Serializable {
     /**
      * 图片地址
      */
-    @TableField("img_url")
-    private String imgUrl;
+    @TableField("url")
+    private String url;
+
+    /**
+     * 图片名称
+     */
+    @TableField("name")
+    private String name;
+
+    /**
+     * 图片md5
+     */
+    @TableField("md5")
+    private String md5;
 
     /**
      * 创建时间

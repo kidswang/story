@@ -27,5 +27,5 @@ public interface UserInfoService extends IService<UserInfo> {
      * @param userInfoBo
      * @return
      */
-    ResponseBean<Boolean> saveOrUpdate(UserInfoBo userInfoBo);
+    ResponseBean<String> saveOrUpdate(UserInfoBo userInfoBo);
 }

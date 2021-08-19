@@ -76,8 +76,8 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
     }
 
     @Override
-    public ResponseBean<Boolean> saveOrUpdate(UserInfoBo userInfoBo) {
-        ResponseBean<Boolean> responseBean = new ResponseBean<>();
+    public ResponseBean<String> saveOrUpdate(UserInfoBo userInfoBo) {
+        ResponseBean<String> responseBean = new ResponseBean<>();
         String openId = userInfoBo.getOpenId();
         String nickName = userInfoBo.getNickName();
         LambdaQueryWrapper<UserInfo> userInfoLambdaQueryWrapper = new LambdaQueryWrapper<>();
@@ -88,7 +88,7 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
         if (Objects.nonNull(userInfo)) {
             userInfo.setNickName(nickName);
             userInfoMapper.updateById(userInfo);
-            responseBean.setRes(Boolean.TRUE);
+            responseBean.setRes(userInfo.getId().toString());
             responseBean.setCode(ResponseStatusEnum.SUCCESS.getStatusCode());
             responseBean.setMsg(ResponseStatusEnum.SUCCESS.getMsg());
             return responseBean;
@@ -106,7 +106,7 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
         userInfo.setCity(userInfoBo.getCity());
         userInfoMapper.insert(userInfo);
 
-        responseBean.setRes(Boolean.TRUE);
+        responseBean.setRes(userInfo.getId().toString());
         responseBean.setCode(ResponseStatusEnum.SUCCESS.getStatusCode());
         responseBean.setMsg(ResponseStatusEnum.SUCCESS.getMsg());
         return responseBean;
