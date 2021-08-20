@@ -1,7 +1,11 @@
 package com.waiwaiwai.story.bo;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
+import org.checkerframework.checker.formatter.qual.Format;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -10,7 +14,8 @@ public class NoteContentBo {
     /**
      * 发生日期
      */
-    private LocalDateTime happenDate;
+//    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private String happenDate;
 
     /**
      * 内容
@@ -30,8 +35,12 @@ public class NoteContentBo {
     /**
      * 图片md5
      */
-    private String md5;
+    private String url;
 
+    /**
+     * 图片md5
+     */
+    private String md5;
 
 
 }

@@ -25,14 +25,14 @@ public class NoteImg implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "id", type = IdType.AUTO)
-    private Long id;
+    @TableId(value = "id", type = IdType.ASSIGN_ID)
+    private String id;
 
     /**
      * 记事本id
      */
     @TableField("note_id")
-    private Long noteId;
+    private String noteId;
 
     /**
      * 图片地址

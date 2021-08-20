@@ -1,6 +1,7 @@
 package com.waiwaiwai.story.pojo;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -25,14 +26,14 @@ public class NoteContent implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId(value = "id", type = IdType.AUTO)
-    private Long id;
+    @TableId(value = "id", type = IdType.ASSIGN_ID)
+    private String id;
 
     /**
      * 发生日期
      */
     @TableField("happen_date")
-    private LocalDateTime happenDate;
+    private LocalDate happenDate;
 
     /**
      * 内容

@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -87,6 +88,7 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
 
         if (Objects.nonNull(userInfo)) {
             userInfo.setNickName(nickName);
+            userInfo.setAvatarUrl(userInfoBo.getAvatarUrl());
             userInfoMapper.updateById(userInfo);
             responseBean.setRes(userInfo.getId().toString());
             responseBean.setCode(ResponseStatusEnum.SUCCESS.getStatusCode());
@@ -97,6 +99,7 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
         userInfo = new UserInfo();
 
         userInfo.setNickName(nickName);
+        userInfo.setAvatarUrl(userInfoBo.getAvatarUrl());
         userInfo.setGender(userInfoBo.getGender());
         userInfo.setOpenId(openId);
         userInfo.setGmtCreate(LocalDateTime.now());
@@ -110,5 +113,11 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
         responseBean.setCode(ResponseStatusEnum.SUCCESS.getStatusCode());
         responseBean.setMsg(ResponseStatusEnum.SUCCESS.getMsg());
         return responseBean;
+    }
+
+    @Override
+    public List<UserInfo> getAllUserInfo() {
+        LambdaQueryWrapper<UserInfo> userInfoLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        return userInfoMapper.selectList(userInfoLambdaQueryWrapper);
     }
 }

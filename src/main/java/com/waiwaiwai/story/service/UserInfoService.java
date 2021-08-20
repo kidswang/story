@@ -5,6 +5,8 @@ import com.waiwaiwai.story.pojo.UserInfo;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.waiwaiwai.story.response.ResponseBean;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务类
@@ -28,4 +30,6 @@ public interface UserInfoService extends IService<UserInfo> {
      * @return
      */
     ResponseBean<String> saveOrUpdate(UserInfoBo userInfoBo);
+
+    List<UserInfo> getAllUserInfo();
 }
