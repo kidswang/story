@@ -91,6 +91,7 @@ public class NoteContentServiceImpl extends ServiceImpl<NoteContentMapper, NoteC
         Integer size = contentInfoParameter.getSize();
 
         LambdaQueryWrapper<NoteContent> noteContentLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        noteContentLambdaQueryWrapper.orderByDesc(NoteContent::getHappenDate);
         IPage<NoteContent> page1 = new Page<>(page, size);
         IPage<NoteContent> noteContentIPage = noteContentMapper.selectPage(page1, noteContentLambdaQueryWrapper);
         Long total = noteContentIPage.getTotal();

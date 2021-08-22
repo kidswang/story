@@ -90,7 +90,7 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoMapper, UserInfo> i
             userInfo.setNickName(nickName);
             userInfo.setAvatarUrl(userInfoBo.getAvatarUrl());
             userInfoMapper.updateById(userInfo);
-            responseBean.setRes(userInfo.getId().toString());
+            responseBean.setRes(userInfo.getId());
             responseBean.setCode(ResponseStatusEnum.SUCCESS.getStatusCode());
             responseBean.setMsg(ResponseStatusEnum.SUCCESS.getMsg());
             return responseBean;
