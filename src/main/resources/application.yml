@@ -2,8 +2,13 @@ spring:
   application:
     name: story
   datasource:
+#    driverClassName: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://47.102.100.160:3306/love_story?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+#    username: root
+#    password: RvcDDt&Qsfk8BEiDoi#g
+
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://47.102.100.160:3306/love_story?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://127.0.0.1:3306/love_story?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
     username: root
     password: RvcDDt&Qsfk8BEiDoi#g
   servlet:
@@ -34,8 +39,8 @@ mybatis:
     map-underscore-to-camel-case: true
 
 go-fastdfs:
-  uploadUrl: http://47.102.100.160:8080/group1/upload
-  deleteUrl: http://47.102.100.160:8080/group1/delete
+  uploadUrl: http://127.0.0.1:8080/group1/upload
+  deleteUrl: http://127.0.0.1:8080/group1/delete
 
 wx:
   appid: wx2b726168cd838629

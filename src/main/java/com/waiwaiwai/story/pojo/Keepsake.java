@@ -1,12 +1,12 @@
 package com.waiwaiwai.story.pojo;
 
-import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -18,8 +18,8 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName("note_content")
-public class NoteContent implements Serializable {
+@TableName("keepsake")
+public class Keepsake implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -35,8 +35,8 @@ public class NoteContent implements Serializable {
     /**
      * 内容
      */
-    @TableField("content")
-    private String content;
+    @TableField("message")
+    private String message;
 
     /**
      * 用户id
@@ -63,11 +63,13 @@ public class NoteContent implements Serializable {
     @TableLogic
     private Integer deleted;
 
+
+
     public static final String ID = "id";
 
     public static final String HAPPEN_DATE = "happen_date";
 
-    public static final String CONTENT = "content";
+    public static final String MESSAGE = "message";
 
     public static final String USER_ID = "user_id";
 
